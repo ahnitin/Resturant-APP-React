@@ -1,0 +1,11 @@
+.header {
+  background-color: rgb(230, 71, 71);
+}
+.cart {
+  font-size: x-large;
+  background-color: rgb(157, 55, 55);
+  border-radius: 10px;
+  width: 12rem;
+  height: 3rem;
+  border: none;
+}
