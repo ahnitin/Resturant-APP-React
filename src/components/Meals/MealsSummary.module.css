@@ -1,0 +1,16 @@
+.summary {
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  justify-content: center;
+  align-items: center;
+  background-color: grey;
+  border-radius: 10px;
+  width: 60%;
+  margin-left: 20%;
+  height: 15rem;
+  z-index: 10;
+  margin-top: -7rem;
+  position: relative;
+  overflow: hidden;
+}
