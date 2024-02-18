@@ -1,3 +1,5 @@
+import Card from "../UI/Card";
+import MealItem from "./MealITem/MealItem";
 const AvailableMeals = () => {
   let meals = [
     {
@@ -16,13 +18,16 @@ const AvailableMeals = () => {
   return (
     <>
       <section>
-        <ul>
+        <ul className="list-group">
           {meals.map((meal) => (
-            <li>
-              {meal.name}
-              {meal.description}
-              {meal.price}
-            </li>
+            <Card>
+              <MealItem
+                key={meal.id}
+                name={meal.name}
+                description={meal.description}
+                price={meal.price}
+              />
+            </Card>
           ))}
         </ul>
       </section>

@@ -1,7 +1,7 @@
 import styles from "./Header.module.css";
 import headerImg from "../../assets/header_table.jpg";
 import { IoIosCart } from "react-icons/io";
-const Header = () => {
+const Header = (props) => {
   return (
     <>
       <header
@@ -63,6 +63,9 @@ const Header = () => {
             <button
               type="button"
               className={`btn btn-danger position-relative ${styles.cart}`}
+              onClick={() => {
+                props.onShowCart();
+              }}
             >
               <IoIosCart />
               <span> Your Cart </span>
