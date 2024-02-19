@@ -1,8 +1,15 @@
+import { useRef } from "react";
 import Input from "../../UI/Input";
 const MealItemForm = (props) => {
+  const quantity = useRef();
+  const submitHandler = (event) => {
+    event.preventDefault();
+    props.onSelectQuantity(quantity.current.value);
+  };
   return (
-    <form>
+    <form onSubmit={submitHandler}>
       <Input
+        ref={quantity}
         label="Amount"
         input={{
           id: "amount",
@@ -13,7 +20,7 @@ const MealItemForm = (props) => {
           defaultValue: "1",
         }}
       />
-      <button>+Add</button>
+      <button type="submit">+Add</button>
     </form>
   );
 };

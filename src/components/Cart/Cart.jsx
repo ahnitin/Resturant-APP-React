@@ -1,8 +1,12 @@
+import { useContext } from "react";
 import Model from "../UI/Model";
 import { IoMdClose } from "react-icons/io";
+import CartContext from "../../store/cart-context";
+import styles from "./Cart.module.css";
 
 const Cart = (props) => {
-  const cartItems = [{ id: "c1", name: "sushi", amount: 2, price: 12.99 }];
+  const { cart, removeItem } = useContext(CartContext);
+  let items = cart.items;
   return (
     <Model onHideCart={props.onHideCart}>
       <span
@@ -11,18 +15,40 @@ const Cart = (props) => {
       >
         <IoMdClose />
       </span>
-      <ul>
-        {cartItems.map((item) => (
-          <li>item.name</li>
+      <ul className={`list-group list-group-flush ${styles.items}`}>
+        {items.map((item) => (
+          <li
+            className={`list-group-item list-group-item-action ${styles["single_item"]}`}
+          >
+            <div>
+              <div className={styles.item_name}>{item.name}</div>
+              <div>
+                <span>${item.price} </span> <span> x {item.quantity}</span>
+              </div>
+            </div>
+            <div className={styles.add_remove}>
+              <button
+                className="btn btn-outline-danger"
+                onClick={() => {
+                  removeItem(item);
+                }}
+              >
+                -
+              </button>
+              <button className="btn btn-outline-danger">+</button>
+            </div>
+          </li>
         ))}
       </ul>
-      <div>
-        <span>Total Amount: </span>
-        <span>35.62</span>
+      <div className={styles.total_Amount}>
+        <span>Total Amount:</span>
+        <span>$ {cart.total}</span>
       </div>
-      <div>
-        <button onClick={props.onHideCart}>Close</button>
-        <button>Order</button>
+      <div className={styles.order_close}>
+        <button onClick={props.onHideCart} className="btn btn-outline-danger">
+          Close
+        </button>
+        <button className="btn btn-danger">Order</button>
       </div>
     </Model>
   );

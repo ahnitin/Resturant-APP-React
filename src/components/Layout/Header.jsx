@@ -1,7 +1,13 @@
 import styles from "./Header.module.css";
 import headerImg from "../../assets/header_table.jpg";
 import { IoIosCart } from "react-icons/io";
+import { useContext } from "react";
+import CartContext from "../../store/cart-context";
+
 const Header = (props) => {
+  const { cart } = useContext(CartContext);
+
+  let itemsNumber = cart.items.length;
   return (
     <>
       <header
@@ -70,7 +76,7 @@ const Header = (props) => {
               <IoIosCart />
               <span> Your Cart </span>
               <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                0
+                {itemsNumber}
               </span>
             </button>
           </div>
